@@ -4,6 +4,7 @@ using api.Dtos;
 using api.Dtos.Item;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace api.Controllers;
 [Route("api/item")]
@@ -17,17 +18,17 @@ public class ItemContoller : ControllerBase
     }
 
     [HttpGet]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
-        var items = _context.Item.ToList()
-        .Select(s => s.ToItemDto());
+        var items = await _context.Item.ToListAsync();
+        var itemDto = items.Select(s => s.ToItemDto());
         return Ok(items);
     }
 
     [HttpGet("{id}")]
-    public IActionResult GetById([FromRoute] int id)
+    public async Task<IActionResult> GetById([FromRoute] int id)
     {
-        var item = _context.Item.Find(id);
+        var item = await _context.Item.FindAsync(id);
 
         if(item == null)
         {
@@ -39,19 +40,19 @@ public class ItemContoller : ControllerBase
 
     [HttpPost]
 
-    public IActionResult Create([FromBody] CreateItemRequestDto itemDto)
+    public async Task<IActionResult> Create([FromBody] CreateItemRequestDto itemDto)
     {
         var itemModel = itemDto.ToItemFromCreateDTO();
-        _context.Item.Add(itemModel);
-        _context.SaveChanges();
+        await _context.Item.AddAsync(itemModel);
+        await _context.SaveChangesAsync();
         return CreatedAtAction(nameof(GetById),new {id = itemModel.Id},itemModel);
     }
 
     [HttpPut("{id}")]
 
-    public IActionResult Update([FromRoute] int id, [FromBody] UpdateItemRequestDto updateDto)
+    public async Task<IActionResult> Update([FromRoute] int id, [FromBody] UpdateItemRequestDto updateDto)
     {
-        var itemModel = _context.Item.FirstOrDefault(x => x.Id == id);
+        var itemModel = await _context.Item.FirstOrDefaultAsync(x => x.Id == id);
 
         if(itemModel == null)
         {
@@ -60,16 +61,16 @@ public class ItemContoller : ControllerBase
         itemModel.Name = updateDto.Name;
         itemModel.ExpireDate = updateDto.ExpireDate;
 
-        _context.SaveChanges();
+        await _context.SaveChangesAsync();
         
         return Ok(itemModel.ToItemDto());
     }
 
     [HttpDelete("{id}")]
 
-    public IActionResult Delete([FromRoute] int id)
+    public async Task<IActionResult> Delete([FromRoute] int id)
     {
-        var itemModel =  _context.Item.FirstOrDefault(x => x.Id == id);
+        var itemModel =  await _context.Item.FirstOrDefaultAsync(x => x.Id == id);
 
         if(itemModel == null)
         {
@@ -77,7 +78,7 @@ public class ItemContoller : ControllerBase
         }
 
         _context.Item.Remove(itemModel);
-        _context.SaveChanges();
+       await _context.SaveChangesAsync();
 
         return NoContent();
     }
