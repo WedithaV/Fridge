@@ -47,4 +47,22 @@ public class ItemContoller : ControllerBase
         return CreatedAtAction(nameof(GetById),new {id = itemModel.Id},itemModel);
     }
 
+    [HttpPut("{id}")]
+
+    public IActionResult Update([FromRoute] int id, [FromBody] UpdateItemRequestDto updateDto)
+    {
+        var itemModel = _context.Item.FirstOrDefault(x => x.Id == id);
+
+        if(itemModel == null)
+        {
+            return NotFound();
+        }
+        itemModel.Name = updateDto.Name;
+        itemModel.ExpireDate = updateDto.ExpireDate;
+
+        _context.SaveChanges();
+        
+        return Ok(itemModel.ToItemDto());
+    }
+
 }

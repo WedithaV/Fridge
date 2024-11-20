@@ -12,7 +12,7 @@ public static class ItemMapper
         {
            Id = itemModel.Id,
            Name = itemModel.Name,
-           //ExpireDate = itemModel.ExpireDate 
+           ExpireDate = itemModel.ExpireDate 
         };
     }
 
