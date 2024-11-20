@@ -13,5 +13,5 @@ public class ApplicationDBContext : DbContext
         
     }
 
-    public DbSet<Item> Item {get; set;}
+    public DbSet<Item> Item {get; set;} = null!;
 }
