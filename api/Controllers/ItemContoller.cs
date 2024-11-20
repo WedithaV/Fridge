@@ -65,4 +65,21 @@ public class ItemContoller : ControllerBase
         return Ok(itemModel.ToItemDto());
     }
 
+    [HttpDelete("{id}")]
+
+    public IActionResult Delete([FromRoute] int id)
+    {
+        var itemModel =  _context.Item.FirstOrDefault(x => x.Id == id);
+
+        if(itemModel == null)
+        {
+            return NotFound();
+        }
+
+        _context.Item.Remove(itemModel);
+        _context.SaveChanges();
+
+        return NoContent();
+    }
+
 }
