@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Weditha\\Desktop\\Fridge\\Fridge\\api\\api.csproj": {}
+    "C:\\Users\\wedit\\Desktop\\Fridge\\Fridge\\api\\api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Weditha\\Desktop\\Fridge\\Fridge\\api\\api.csproj": {
+    "C:\\Users\\wedit\\Desktop\\Fridge\\Fridge\\api\\api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Weditha\\Desktop\\Fridge\\Fridge\\api\\api.csproj",
+        "projectUniqueName": "C:\\Users\\wedit\\Desktop\\Fridge\\Fridge\\api\\api.csproj",
         "projectName": "api",
-        "projectPath": "C:\\Users\\Weditha\\Desktop\\Fridge\\Fridge\\api\\api.csproj",
-        "packagesPath": "C:\\Users\\Weditha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Weditha\\Desktop\\Fridge\\Fridge\\api\\obj\\",
+        "projectPath": "C:\\Users\\wedit\\Desktop\\Fridge\\Fridge\\api\\api.csproj",
+        "packagesPath": "C:\\Users\\wedit\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wedit\\Desktop\\Fridge\\Fridge\\api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Weditha\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\wedit\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
