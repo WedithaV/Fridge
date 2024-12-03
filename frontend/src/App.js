@@ -181,7 +181,7 @@ const App = () => {
           </div>
           <button
             onClick={handleSave}
-            className="bg-blue-600 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-700 mt-6">
+            className="bg-blue-800 text-white px-4 py-2 rounded-md shadow-sm hover:bg-blue-1200 mt-6">
             ADD TO FRIDGE
           </button>
         </div>
